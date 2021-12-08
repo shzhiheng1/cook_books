@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 // import './index.css';
 import App from './App';
 import 'lib-flexible'
+import './assets/images/svg';
+
 
 ReactDOM.render(
     <App />,

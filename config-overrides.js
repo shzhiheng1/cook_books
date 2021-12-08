@@ -1,53 +1,12 @@
-const { override, addWebpackAlias,addWebpackResolve,addLessLoader } = require("customize-cra")
+const { override, addWebpackAlias,addWebpackResolve,addLessLoader,addWebpackModuleRule } = require("customize-cra")
 
 const path=require("path");
-const { extendDefaultPlugins } = require('svgo');
 
 
 const rewirePostcss = require('react-app-rewire-postcss');
 const px2rem = require('postcss-px2rem')
 
-// function resolve (dir){
-//     return path.join(__dirname,dir)
-// } 
-// 自定义配置,配置配置svg
-const alter_config = () => (config, env) => {
-    const oneOf_loc = config.module.rules.findIndex(n => n.oneOf)
-    config.module.rules[oneOf_loc].oneOf = [    
-        {
-            test: /\.svg$/,
-            use: [
-                { 
-                    loader: 'svg-sprite-loader', 
-                    options: {
-                    //    symbolId:'[name]'
-                    } 
-                },
-                { loader: 'svgo-loader', options: {
-                    // plugins:[
-                    //     {removeAttrs: {attrs:'fill'}}
-                    //   ]
-                } }
 
-                // {
-                //     loader: 'svgo-loader', options: {
-                //         plugins: extendDefaultPlugins([
-                //             {
-                //                 name: 'removeAttrs',
-                //                 params: {
-                //                     attrs: 'fill'
-                //                 }
-                //             }
-                //         ])
-                //     }
-                // }
-            ]
-        },
-        ...config.module.rules[oneOf_loc].oneOf
-    ]
-
-    return config;
-}
 
 module.exports=override(
      //按需加载
@@ -92,5 +51,28 @@ module.exports=override(
         });
         return config
     },
-    alter_config ()//自定义组合配置
+    // 配置svg
+    addWebpackModuleRule({
+        test:/\.svg$/,
+        include: [path.resolve(__dirname, "src/assets/images/svg")],
+        use: [
+            {
+                loader: 'svg-sprite-loader',
+                options: {symbolId: "icon-[name]"}
+            },
+            {
+                loader:'svgo-loader',
+                options:{
+                    plugins:[
+                        {
+                            name:'removeAttrs',
+                            params:{
+                                attrs:'fill'
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    })
 )
