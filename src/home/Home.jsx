@@ -99,7 +99,7 @@ import {
   UserOutline,
 } from 'antd-mobile-icons';
 import Category from "./category/Category";
-import Cookbook from "./cookbook/Cookbook";
+import Cookbook from "./cookbook/container/Cookbook";
 import Cookmap from "./cookmap/Cookmap";
 import More from "./more/More";
 
