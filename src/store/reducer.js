@@ -1,15 +1,7 @@
+import {combineReducers} from 'redux';
+import {reducer as cookbookReducer} from '../home/cookbook/index'
 
-const defaultState={
-    list:[]
-}
-const reducer=(state=defaultState,action)=>{
-   switch (action.type) {
-       case 'loadData':
-           return {
-               list:state.list
-           }
-       default:
-           return state;
-   }
-}
-export default reducer;
+const reducer=combineReducers({
+    cookbookReducer
+})
+export default reducer
