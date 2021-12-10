@@ -26,9 +26,21 @@ const HotContainer=styled.div`
         padding-top:0.2rem;
     }
     .grid-item-container{
-        background:#ff00ff;
         height:3rem;
-        font-size:0.45rem;
+        font-size:0.5rem;
+        display:flex;
+        background:#eee;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        >img{
+            width:1.5rem;
+            height:2rem;
+        }
+        >p{
+            color:#666;
+            margin-top:0.1rem;
+        }
     }
 `
 

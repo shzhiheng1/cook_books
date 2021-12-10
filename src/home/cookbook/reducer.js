@@ -7,7 +7,7 @@ const reducer=(state=defaultState,action)=>{
    switch (action.type) {
        case LOADDATA:
            return {
-               list:state.list
+               list:action.list
            }
        default:
            return state;

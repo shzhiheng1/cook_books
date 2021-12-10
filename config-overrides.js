@@ -1,4 +1,11 @@
-const { override, addWebpackAlias,addWebpackResolve,addLessLoader,addWebpackModuleRule } = require("customize-cra")
+const { 
+    override,
+    addWebpackAlias,
+    addWebpackResolve,
+    addLessLoader,
+    addWebpackModuleRule,
+    addDecoratorsLegacy
+} = require("customize-cra")
 
 const path=require("path");
 
@@ -74,5 +81,7 @@ module.exports=override(
                 }
             }
         ]
-    })
+    }),
+    // 配置装饰器
+    addDecoratorsLegacy()
 )
