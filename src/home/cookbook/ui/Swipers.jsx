@@ -1,5 +1,6 @@
 import React from 'react'
 import { Swiper, Toast } from 'antd-mobile'
+import PropTypes from 'prop-types'
 
 import './swipers.less'
 
@@ -14,10 +15,7 @@ function Swipers(props){
           }}
         >
           {
-            item.url&& <img src={item.url}  alt='图片'/>
-          }
-          {
-             !item.url&&<span>{index + 1}</span>
+            list.length>0&& <img src={item.url}  alt='图片'/>
           }
         </div>
       </Swiper.Item>
@@ -26,5 +24,7 @@ function Swipers(props){
         <Swiper autoplay loop>{items}</Swiper>
     )
 }
-
+Swiper.propTypes={
+  list:PropTypes.array
+}
 export default Swipers;
