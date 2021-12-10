@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+`npx create-react-app cook_books`
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,3 +68,27 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `yarn mock` 本地启用json-server服务，调用mock数据。
+使用`http-proxy-middleware`中间件做服务代理，解决本地跨域问题。
+### 使用UI组件: antd mobile
+`yarn add antd-mobile@next`
+
+### 使用 customize-cra 重写配置：
+`yarn add react-app-rewird` 修改package.json文件。
+`yarn add customize-cra` 并创建config-overrides.js进行配置。
+
+## 1.支持修饰： `yarn add babel-plugin-import`
+   配置：addDecoratorsLegacy()
+
+## 2.rem 配置rem ：
+  `yarn add  lib-flexible postcss-px2rem`
+
+## 3.配置 xx.svg解析：
+`yarn add svg-sprite-loader svgo-loader`
+## 4.配置redux
+`yarn add redux react-redux react-thunk`
+
+## 5. 配置less 
+`yarn add less less-loader`
+
