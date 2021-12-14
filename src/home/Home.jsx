@@ -98,7 +98,7 @@ import {
   UnorderedListOutline,
   UserOutline,
 } from 'antd-mobile-icons';
-import Category from "./category/Category";
+import {Category} from "./category";
 import Cookbook from "./cookbook/container/Cookbook";
 import Cookmap from "./cookmap/Cookmap";
 import More from "./more/More";
@@ -149,7 +149,7 @@ const Bottom=function(){
 
 function Layout() {
   return (
-    <Router initialEntries={['/cookbook']}>
+    <Router initialEntries={['/category']}>
       <div className='home'>
           <Switch>
             <Route exact path='/cookbook'>

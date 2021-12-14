@@ -21,7 +21,11 @@ export default function Cookbookui(props) {
         <Container>
             <header>美食大全</header>
             <Swipers list={swiper(props.list)}/>
-            <Search />
+            <Search
+              outBg="#eee"
+              interBg="#fff"
+              hasBorder={true}
+            />
             <Hotcate list={hotcate(props.list)} />
         </Container>
     )
