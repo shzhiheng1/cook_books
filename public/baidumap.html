@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Hello, World</title> 
+<style type="text/css"> 
+html{height:100%} 
+body{height:100%;margin:0px;padding:0px} 
+#container{height:100%} 
+</style> 
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=unqRFCG6EonnG51hXW7eRpjaxeCESemi">
+</script>
+</head> 
+  
+<body> 
+<div id="container"></div>
+<script type="text/javascript">
+// var map = new BMapGL.Map("container");
+// // 创建地图实例 
+// var point = new BMapGL.Point(116.404, 39.915);
+// // 创建点坐标 
+// map.centerAndZoom(point, 15);
+// // 初始化地图，设置中心点坐标和地图级别 
+
+
+var map = new BMapGL.Map('container');
+map.centerAndZoom(new BMapGL.Point(116.331398,39.897445), 12);
+//创建地址解析器实例
+var myGeo = new BMapGL.Geocoder();
+// 将地址解析结果显示在地图上，并调整地图视野
+myGeo.getPoint('浙江省杭州市余杭区奥克斯时代未来之城', function(point){
+    if(point){
+        map.centerAndZoom(point, 16);
+        map.addOverlay(new BMapGL.Marker(point, {title: '浙江省杭州市余杭区奥克斯时代未来之城'}))
+    }else{
+        alert('您选择的地址没有解析到结果！');
+    }
+}, '杭州市')
+
+
+map.addEventListener('click', function(e) {
+    // 添加窗口
+    var opts = {
+        width: 250,     // 信息窗口宽度
+        height: 100,    // 信息窗口高度
+        title: "杭州屹创网络科技有限公司"  // 信息窗口标题
+    }
+    var infoWindow = new BMapGL.InfoWindow("杭州市余杭区奥克斯广场1栋403室", opts);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow, map.getCenter());        // 打开信息窗口
+});
+
+</script> 
+</body> 
+</html>
