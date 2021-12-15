@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import {CategoryWrap} from './StyledCategory'
 import Search from '@/components/search/Search'
+import Menu from './Menu'
 
 export default class Category extends Component {
     constructor(props){
         super(props)
         this.state={
-            tabIndex:0
+            tabIndex:0,
+            type:'category'
         }
     }
     handleClick=(index)=>{
         return ()=>{
             this.setState({
-                tabIndex:index
+                tabIndex:index,
+                type:index===0?'category':'ingredients'
             })
         }
     }
@@ -31,6 +34,7 @@ export default class Category extends Component {
                    interBg="#eee"
                    hasBorder={false}
                 />
+                <Menu type={this.state.type}></Menu>
             </CategoryWrap>
         )
     }

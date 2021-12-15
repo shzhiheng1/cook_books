@@ -7,6 +7,7 @@ const CategoryWrap=styled.div`
        display:flex;
        align-items:center;
        justify-content:center;
+       font-size:0.5rem;
        ul{
            width:3.6rem;
            height:1rem;
@@ -42,6 +43,51 @@ const CategoryWrap=styled.div`
        }
    }
 `
+const MenuWrap=styled.div `
+   display:flex;
+   height:calc(100vh - 4rem);
+   overflow:hidden;
+   border-top:solid 1px #aaa;
+   aside{
+       width:3rem;
+       height:100%;
+       overflow:scroll;
+       font-size:0.6rem;
+       li{
+           height:1.5rem;
+           text-align:center;
+           line-height:1.5rem;
+       }
+       li.active{
+            color:#ff0000;
+            background:#fff;
+            span{
+                border-bottom:1px solid #ff0000;
+                display:inline-block;
+                height:1.5rem;
+            }
+       }
+   }
+   section{
+       flex:1;
+       background:#fff;
+       overflow:scroll;
+       height:98%;
+       font-size:0.5rem;
+       ul{
+           display:flex;
+           flex-wrap:wrap;
+           li{
+               width:33.3333333%;
+               text-align:center;
+               height:1.2rem;
+               line-height:1.2rem;
+           }
+       }
+   }
+
+`
 export {
-    CategoryWrap
+    CategoryWrap,
+    MenuWrap
 }
