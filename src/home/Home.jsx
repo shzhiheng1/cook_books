@@ -83,7 +83,7 @@
 /**
  * TabBar添加路由的用法
  */
-import React from "react";
+import React, { Component } from "react";
 import { TabBar } from "antd-mobile";
 import {
   Route,
@@ -98,22 +98,25 @@ import {
   UnorderedListOutline,
   UserOutline,
 } from 'antd-mobile-icons';
+import { connect } from 'react-redux'
+
 import {Category} from "./category";
 import Cookbook from "./cookbook/container/Cookbook";
 import Cookmap from "./cookmap/Cookmap";
 import More from "./more/More";
 
+
 import './home.less';
 
 
-const Bottom=function(){
+const Bottom=function(props){
   const history=useHistory();
   const localhost=useLocation();
   const {pathname}=localhost;
   const setRouteActive=(value)=>{
     history.push(value)
   }
-  const tabs=[
+  let tabs=[
     {
       key: '/cookbook',
       title: '美食',
@@ -135,45 +138,57 @@ const Bottom=function(){
       icon: <UserOutline />,
     },
   ]
+   if(!props.checked){
+     tabs=tabs.filter((i,index)=>index!==2)
+   }
    
   return (
     <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
-      {tabs.map(item => (
-        <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-      ))}
+      {
+         tabs.map(item => (
+          <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+        ))
+      }
     </TabBar>
   )
 
 }
 
-
-function Layout() {
-  return (
-    <Router initialEntries={['/category']}>
-      <div className='home'>
-          <Switch>
-            <Route exact path='/cookbook'>
-              <Cookbook />
-            </Route>
-            <Route exact path='/category'>
-              <Category />
-            </Route>
-            <Route exact path='/cookmap'>
-              <Cookmap />
-            </Route>
-            <Route exact path='/more'>
-              <More />
-            </Route>
-          </Switch>
-        <div className='nav'>
-          <Bottom />
-        </div>
-        {/* <div className="test">
-           sdddd
-        </div> */}
-       </div>
-    </Router>
-  )
+@connect(
+  state=>({
+    checked:state.moreReducer.checked
+  })
+)
+class Layout extends Component {
+  render(){
+    const {checked}=this.props
+    return (
+      <Router initialEntries={['/more']}>
+        <div className='home'>
+            <div className='nav'>
+              <Bottom checked={checked} />
+            </div>
+            <Switch>
+              <Route exact path='/cookbook'>
+                <Cookbook />
+              </Route>
+              <Route exact path='/category'>
+                <Category />
+              </Route>
+              {
+                checked&&
+                <Route exact path='/cookmap'>
+                  <Cookmap />
+                </Route>
+              }
+              <Route exact path='/more'>
+                <More />
+              </Route>
+            </Switch>
+         </div>
+      </Router>
+    )
+  }
 }
 export default Layout;
 
