@@ -24,7 +24,6 @@ import './more.less';
 )
 class  More extends Component{
    render(){
-       console.log('storage====', storage.get('checked'))
     return (
         <div className='more-wrap'>
             <NavBar 
