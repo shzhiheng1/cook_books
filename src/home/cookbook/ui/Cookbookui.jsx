@@ -25,6 +25,9 @@ export default function Cookbookui(props) {
               outBg="#eee"
               interBg="#fff"
               hasBorder={true}
+              radius={0.2}
+              color="#ee742f"
+              width={'1px'}
             />
             <Hotcate list={hotcate(props.list)} />
         </Container>

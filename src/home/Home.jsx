@@ -163,7 +163,7 @@ class Layout extends Component {
   render(){
     const {checked}=this.props
     return (
-      <Router initialEntries={['/more']}>
+      <Router initialEntries={['/cookbook']}>
         <div className='home'>
             <div className='nav'>
               <Bottom checked={checked} />

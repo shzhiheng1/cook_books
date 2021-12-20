@@ -33,6 +33,7 @@ export default class Category extends Component {
                    outBg="#fff"
                    interBg="#eee"
                    hasBorder={false}
+                   radius="0.2"
                 />
                 <Menu type={this.state.type}></Menu>
             </CategoryWrap>

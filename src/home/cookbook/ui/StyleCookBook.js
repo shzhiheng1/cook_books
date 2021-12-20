@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import border from '@/assets/styled/border'
 
 const Container=styled.div `
     header{
@@ -12,15 +13,6 @@ const Container=styled.div `
     }  
 `
 const HotContainer=styled.div`
-    h1{
-        height:1.5rem;
-        line-height:1.5rem;
-        padding-left:0.5rem;
-        background:#fff;
-        font-size:0.4rem;
-        font-weight:600;
-        border-bottom:1px solid #999;
-    }
     .grid-wrap{
         background:#fff;
         padding-top:0.2rem;
@@ -43,8 +35,18 @@ const HotContainer=styled.div`
         }
     }
 `
-
+const CateTitle=border(
+    styled.div`
+        height:1.5rem;
+        line-height:1.5rem;
+        padding-left:0.5rem;
+        background:#fff;
+        font-size:0.4rem;
+        font-weight:600;
+    `
+)
 export{
     Container,
-    HotContainer
+    HotContainer,
+    CateTitle
 }

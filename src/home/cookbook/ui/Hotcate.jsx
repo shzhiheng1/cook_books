@@ -1,13 +1,16 @@
 import React from 'react'
 import { Grid } from 'antd-mobile'
 
-import {HotContainer} from './StyleCookBook'
+import {HotContainer,CateTitle} from './StyleCookBook'
 
 export default function Hotcate(props) {
     const list=props.list;
     return (
         <HotContainer>
-            <h1>热门分类</h1>
+            <CateTitle
+               width='0 0 1px 0' 
+               color='#666'
+            >热门分类</CateTitle>
             <div className='grid-wrap'>
                 <Grid columns={3} gap={2}>
                     {
