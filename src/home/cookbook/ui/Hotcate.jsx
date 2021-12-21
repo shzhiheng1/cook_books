@@ -16,7 +16,10 @@ export default function Hotcate(props) {
                     {
                         list.map(item=>{
                            return (
-                            <Grid.Item key={item.title}>
+                            <Grid.Item 
+                               key={item.title}
+                               onClick={()=>props.handeClick(item)}
+                            >
                                 <div  className='grid-item-container'>
                                     <img src={item.url} alt='图片' />
                                     <p>{item.title}</p>

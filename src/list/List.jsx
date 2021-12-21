@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { NavBar, Toast } from 'antd-mobile'
+import { NavBar } from 'antd-mobile'
+// import { Toast } from 'antd-mobile'
 import {connect} from 'react-redux'
 import {loadDataAsync} from '@/home/cookbook/actionCreator.js'
 import {ContainerList,LiBorder,EllipsisH2} from './styledList'
@@ -16,14 +17,24 @@ import {ContainerList,LiBorder,EllipsisH2} from './styledList'
     })
 )
 class List extends Component {
+    state={
+        title:'标题'
+    }
     goBack=()=>{
-        console.log('---')
-        Toast.show({
-            content: '点击了返回区域',
-            duration: 1000,
-        })
+        // Toast.show({
+        //     content: '点击了返回区域',
+        //     duration: 1000,
+        // })
+        this.props.history.goBack()
     }
     componentDidMount(){
+        // url取参数
+        if(this.props.location.state){
+            this.setState({
+                title:this.props.location.state.title
+            })
+        }
+        // []拉取数据
         if(this.props.list){
             this.props.getListData()
         }
@@ -40,7 +51,7 @@ class List extends Component {
                     '--height':'1.4rem'
                   }}
                 >
-                   标题
+                   {this.state.title}
                 </NavBar>
                 <div className='order-list'>
                     <ul>

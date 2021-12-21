@@ -2,6 +2,7 @@ import React from 'react'
 import {Container} from '../ui/StyleCookBook'
 import PropTypes from 'prop-types'
 import memoizeOne from 'memoize-one'
+import { useHistory } from 'react-router-dom'
 
 import Swipers from '../ui/Swipers'
 import Search from '@/components/search/Search'
@@ -11,12 +12,16 @@ import Hotcate from '../ui/Hotcate'
 
 
 export default function Cookbookui(props) {
+    const history=useHistory()
     const swiper=memoizeOne((list)=>{
         return list.slice(0,3)
     })
     const hotcate=memoizeOne((list)=>{
         return list.slice(0,4)
     })
+    const clickItem=(item)=>{
+        return  history.push({pathname:'/list',state:{title:item.title}})
+    }
     return (
         <Container>
             <header>美食大全</header>
@@ -29,7 +34,10 @@ export default function Cookbookui(props) {
               color="#ee742f"
               width={'1px'}
             />
-            <Hotcate list={hotcate(props.list)} />
+            <Hotcate 
+              list={hotcate(props.list)} 
+              handeClick={clickItem}
+            />
         </Container>
     )
 }
