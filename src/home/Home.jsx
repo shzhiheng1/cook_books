@@ -6,6 +6,7 @@
 import React, { Component } from 'react'
 import {  TabBar } from 'antd-mobile'
 import {connect} from 'react-redux'
+import {activeKeySync} from '@/home/category/actionCreatoer.js'
 import {
     AppOutline,
     MessageOutline,
@@ -18,6 +19,7 @@ import {Category} from "./category";
 import Cookbook from "./cookbook/container/Cookbook";
 import Cookmap from "./cookmap/Cookmap";
 import More from "./more/More";
+
 
 function HomeIcon() {
   return( <div>
@@ -41,26 +43,18 @@ function ActiveContent(props){
 }
 @connect(
   state=>({
-    checked:state.moreReducer.checked
+    checked:state.moreReducer.checked,
+    activeKey:state.categoryReducer.categoryInfo.activeKey
+  }),
+  dispatch=>({
+    handleNav(activeKey){
+      dispatch(activeKeySync(activeKey))
+    }
   })
 )
 class Home extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            activeKey:'cookbook'
-        }
-        this.handleNav=this.handleNav.bind(this)
-    }
-    handleNav(key){
-        console.log(key)
-        this.setState({
-          activeKey:key
-        })
-    }
     render() {
-        const {activeKey}=this.state;
-        const {checked}=this.props;  
+      const {checked,activeKey}=this.props;  
       let tabs=[
               {
                 key: 'cookbook',
@@ -93,7 +87,7 @@ class Home extends Component {
                     <ActiveContent activeKey={activeKey}></ActiveContent>
                 </main> 
                 <nav className='nav'>
-                    <TabBar activeKey={activeKey} onChange={this.handleNav} >
+                    <TabBar activeKey={activeKey} onChange={this.props.handleNav} >
                         {tabs.map(item => (
                             <TabBar.Item
                             key={item.key}
