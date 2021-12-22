@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { request } from '../../../utils/request'
 import PropTypes from 'prop-types'
 import MenuList from '../ui/MenuList'
-
-export default class Menu extends Component {
+@withRouter
+class Menu extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -52,6 +53,10 @@ export default class Menu extends Component {
             })
         }
     }
+    goTo=(item)=>{
+        const history=this.props.history;
+        history.push({pathname:'/list',state:{title:item}})
+    }
     render() {
         const {cate,checkCate}=this.state
         console.log(this.props.type)
@@ -61,7 +66,9 @@ export default class Menu extends Component {
                 cate={cate&&cate[this.props.type]}
                 checkCate={checkCate}
                 onAsideClick={this.changeAside}
+                onClickGo={this.goTo}
             ></MenuList>
         )
     }
 }
+export default Menu

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {MenuWrap} from '../container/StyledCategory'
 
 export default function MenuList(props) {
-    const {cate,checkCate,onAsideClick}=props
+    const {cate,checkCate,onAsideClick,onClickGo}=props
     return (
         <MenuWrap>
                 <aside>
@@ -26,7 +26,7 @@ export default function MenuList(props) {
                        {
                           cate&&cate[checkCate].map(item=>{
                               return(
-                                <li key={item}>{item}</li>
+                                <li key={item} onClick={()=>onClickGo(item)}>{item}</li>
                               )
                           })
                        }
