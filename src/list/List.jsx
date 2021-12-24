@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { NavBar } from 'antd-mobile'
-// import { Toast } from 'antd-mobile'
 import {connect} from 'react-redux'
 import {loadDataAsync} from '@/home/cookbook/actionCreator.js'
 import {ContainerList,LiBorder,EllipsisH2} from './styledList'
-
+import NavBack from '../components/navback/NavBack'
 
 @connect(
     state=>({
@@ -17,23 +15,7 @@ import {ContainerList,LiBorder,EllipsisH2} from './styledList'
     })
 )
 class List extends Component {
-    state={
-        title:'标题'
-    }
-    goBack=()=>{
-        // Toast.show({
-        //     content: '点击了返回区域',
-        //     duration: 1000,
-        // })
-        this.props.history.goBack()
-    }
     componentDidMount(){
-        // url取参数
-        if(this.props.location.state){
-            this.setState({
-                title:this.props.location.state.title
-            })
-        }
         // []拉取数据
         if(this.props.list){
             this.props.getListData()
@@ -43,16 +25,7 @@ class List extends Component {
         const {list}=this.props
         return (
             <ContainerList>
-                <NavBar 
-                 onBack={this.goBack}
-                 style={{
-                    background:'#ee742f',
-                    color:'#fff',
-                    '--height':'1.4rem'
-                  }}
-                >
-                   {this.state.title}
-                </NavBar>
+                <NavBack></NavBack>
                 <div className='order-list'>
                     <ul>
                         {

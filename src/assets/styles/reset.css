@@ -4,6 +4,7 @@
 }
 #root,#app{
     height: 100vh;
+    position: relative;
 }
 body{
     background-color: #eee;
