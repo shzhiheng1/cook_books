@@ -34,7 +34,7 @@ class Cookbook extends Component {
       this.props.loadData()
     }
     componentDidUpdate(){
-      console.log('更新list===',this.props.list)
+      // console.log('更新list===',this.props.list)
     }
 }
 export default Cookbook

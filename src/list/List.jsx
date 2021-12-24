@@ -4,6 +4,7 @@ import {loadDataAsync} from '@/home/cookbook/actionCreator.js'
 import {ContainerList,LiBorder,EllipsisH2} from './styledList'
 import NavBack from '../components/navback/NavBack'
 
+
 @connect(
     state=>({
         list:state.cookbookReducer.list
@@ -15,6 +16,12 @@ import NavBack from '../components/navback/NavBack'
     })
 )
 class List extends Component {
+    goDetail=(item)=>{
+        const history=this.props.history
+        return ()=>{
+            history.push('/detail',item)
+        }
+    }
     componentDidMount(){
         // []拉取数据
         if(this.props.list){
@@ -34,6 +41,7 @@ class List extends Component {
                                     width={list.length-1===index?'0':'0 0 1px 0'}
                                     color='#ccc'
                                     key={item.id}
+                                    onClick={this.goDetail(item)}
                                 >
                                     <img src={item.url} alt="logo"  />
                                     <div>

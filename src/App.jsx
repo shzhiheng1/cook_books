@@ -3,6 +3,7 @@ import {Route,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './home/Home'
 import List from './list/List'
+import Detail from './detail/Detail';
 import Page404 from './404Page/Page404';
 import '@/assets/styles/reset.css';
 import AnimatedSwitch from '@/components/animated/AnimatedSwitch'
@@ -20,6 +21,7 @@ class App extends Component {
                 <AnimatedSwitch type={this.props.animatedType}>
                     <Route path='/home' component={Home}></Route>
                     <Route path='/list' component={List}></Route>
+                    <Route path='/detail' component={Detail}></Route>
                     <Redirect exact from='/' to='/home' ></Redirect>
                     <Route path='/*' component={Page404}></Route>
                 </AnimatedSwitch>
