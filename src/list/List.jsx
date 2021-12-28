@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {loadDataAsync} from '@/home/cookbook/actionCreator.js'
+// import {loadDataAsync} from '@/home/cookbook/actionCreator.js'
 import {ContainerList,LiBorder,EllipsisH2} from './styledList'
 import NavBack from '../components/navback/NavBack'
 
@@ -12,7 +12,8 @@ import NavBack from '../components/navback/NavBack'
     }),
     (dispatch)=>({
         getListData(){
-            dispatch(loadDataAsync())
+            // dispatch(loadDataAsync())
+            dispatch({type: 'LOAD_DATA_LIS'})
         }
     })
 )

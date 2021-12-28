@@ -49,7 +49,7 @@
 
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import { loadDataAsync } from '../actionCreator'
+// import { loadDataAsync } from '../actionCreator'
 import Cookbookui from '../ui/Cookbookui'
 
 
@@ -58,7 +58,8 @@ export default function Cookbook() {
   const list=useSelector(state=>state.getIn(['cookbookReducer','list']))
   let dispatch=useDispatch();
   useEffect(()=>{
-    dispatch(loadDataAsync())
+    // dispatch(loadDataAsync())
+    dispatch({type: 'LOAD_DATA_LIS'})
   },[dispatch])
 
   return (
