@@ -1,4 +1,6 @@
-import {combineReducers} from 'redux';
+// import {combineReducers} from 'redux';
+import { combineReducers } from 'redux-immutable'
+
 import {reducer as cookbookReducer} from '../home/cookbook/index'
 import {reducer as moreReducer} from '../home/more'
 import {reducer as categoryReducer} from '../home/category'

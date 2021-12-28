@@ -8,8 +8,10 @@ import MenuList from '../ui/MenuList'
 @withRouter
 @connect(
     state=>({
-        checkCate:state.categoryReducer.categoryInfo.checkCate,
-        categoryType:state.categoryReducer.categoryInfo.categoryType
+        // checkCate:state.categoryReducer.categoryInfo.checkCate,
+        checkCate:state.getIn(['categoryReducer','categoryInfo','checkCate']),
+        // categoryType:state.categoryReducer.categoryInfo.categoryType
+        categoryType:state.getIn(['categoryReducer','categoryInfo','categoryType'])
     }),
     dispatch=>({
         changeAside(checkCate){

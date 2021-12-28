@@ -55,7 +55,9 @@ import {CategoryWrap} from './StyledCategory'
 
 
 export default function Category() {
-    const {categoryType}=useSelector(state=>state.categoryReducer.categoryInfo);
+    // const {categoryType}=useSelector(state=>state.categoryReducer.categoryInfo);
+    const categoryType=useSelector(state=>state.getIn(['categoryReducer','categoryInfo','categoryType']));
+
     let dispatch=useDispatch();
     const handleClick=(categoryType)=>{
         dispatch(categoryTypeSync(categoryType))

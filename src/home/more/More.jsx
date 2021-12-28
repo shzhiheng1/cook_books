@@ -12,7 +12,7 @@ import './more.less';
 
 @connect(
     state=>({
-        checked:state.moreReducer.checked
+        checked:state.getIn(['moreReducer','checked'])
     }),
     dispatch=>({
         handleChange(checked){

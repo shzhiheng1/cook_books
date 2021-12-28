@@ -15,7 +15,7 @@ function Swipers(props){
           }}
         >
           {
-            list.length>0&& <img src={item.url}  alt='图片'/>
+            list.size>0&& <img src={item.url}  alt='图片'/>
           }
         </div>
       </Swiper.Item>

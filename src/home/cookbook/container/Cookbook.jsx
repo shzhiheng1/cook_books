@@ -54,7 +54,8 @@ import Cookbookui from '../ui/Cookbookui'
 
 
 export default function Cookbook() {
-  const {list}=useSelector(state=>state.cookbookReducer)
+  // const {list}=useSelector(state=>state.cookbookReducer)
+  const list=useSelector(state=>state.getIn(['cookbookReducer','list']))
   let dispatch=useDispatch();
   useEffect(()=>{
     dispatch(loadDataAsync())

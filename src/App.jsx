@@ -48,7 +48,7 @@ import '@/assets/styles/reset.css';
 
 
 const App=()=>{
-    const {animatedType}=useSelector(state=>state.animatedReducer)
+    const animatedType=useSelector(state=>state.getIn(['animatedReducer','animatedType']))
     return (
         <>
             <AnimatedSwitch type={animatedType}>

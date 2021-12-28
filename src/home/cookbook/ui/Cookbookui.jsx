@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container} from '../ui/StyleCookBook'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import memoizeOne from 'memoize-one'
 import { useHistory } from 'react-router-dom'
 
@@ -42,6 +42,6 @@ export default function Cookbookui(props) {
     )
 }
 // 函数式组件使用类型检查
-Cookbookui.propTypes={
-    list:PropTypes.array
-}
+// Cookbookui.propTypes={
+//     list:PropTypes.array
+// }

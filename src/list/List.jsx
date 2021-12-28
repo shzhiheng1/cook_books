@@ -7,7 +7,8 @@ import NavBack from '../components/navback/NavBack'
 
 @connect(
     state=>({
-        list:state.cookbookReducer.list
+        // list:state.cookbookReducer.list
+        list:state.getIn(['cookbookReducer','list'])
     }),
     (dispatch)=>({
         getListData(){
@@ -36,7 +37,7 @@ class List extends Component {
                 <div className='order-list'>
                     <ul>
                         {
-                           list.length>0&&list.map((item,index)=>(
+                           list.size>0&&list.map((item,index)=>(
                                 <LiBorder
                                     width={list.length-1===index?'0':'0 0 1px 0'}
                                     color='#ccc'

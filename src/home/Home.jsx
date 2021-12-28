@@ -131,29 +131,7 @@ import Cookmap from "./cookmap/Cookmap";
 import More from "./more/More";
 
 
-      let tabs=[
-              {
-                key: 'cookbook',
-                title: '美食',
-                icon:(activeKey)=> activeKey? <HomeIcon />:<AppOutline />,
-              },
-              {
-                key: 'category',
-                title: '分类',
-                icon: <UnorderedListOutline />,
-              },
-              {
-                key: 'cookmap',
-                title: '地图',
-                icon: <MessageOutline />,
-              },
-              {
-                key: 'more',
-                title: '更多',
-                icon: <MessageFill />,
-                badge: '99+',
-              },
-      ]
+     
 
 function HomeIcon() {
   return( <div>
@@ -178,8 +156,34 @@ function ActiveContent(props){
 
 
 export default function Home() {
-        const {checked}=useSelector(state=>state.moreReducer)
-        const {activeKey}=useSelector(state=>state.categoryReducer.categoryInfo)
+    let tabs=[
+    {
+      key: 'cookbook',
+      title: '美食',
+      icon:(activeKey)=> activeKey? <HomeIcon />:<AppOutline />,
+    },
+    {
+      key: 'category',
+      title: '分类',
+      icon: <UnorderedListOutline />,
+    },
+    {
+      key: 'cookmap',
+      title: '地图',
+      icon: <MessageOutline />,
+    },
+    {
+      key: 'more',
+      title: '更多',
+      icon: <MessageFill />,
+      badge: '99+',
+    },
+    ]
+        // const {checked}=useSelector(state=>state.moreReducer)
+        const checked=useSelector(state=>state.getIn(['moreReducer','checked']))
+
+        // const {activeKey}=useSelector(state=>state.categoryReducer.categoryInfo)
+        const activeKey=useSelector(state=>state.getIn(['categoryReducer','categoryInfo','activeKey']))
         const dispatch = useDispatch()
         const handleNav=useCallback((activeKey)=>{
             dispatch(activeKeySync(activeKey))
