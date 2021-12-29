@@ -1,4 +1,5 @@
 {
     "/api/hotcate":"/hotcate",
-    "/api/category":"/category"
+    "/api/category":"/category",
+    "/api/login":"/login"
 }

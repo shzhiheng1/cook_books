@@ -5,7 +5,7 @@ const Container=styled.div `
     header{
         color:#fff;
         background:#ff0000;
-        width:10rem;
+        width:100%;
         height:2.133333rem;
         text-align:center;
         line-height:2.133333rem;

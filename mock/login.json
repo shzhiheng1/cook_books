@@ -1,0 +1,11 @@
+{
+    "msg":"ok",
+    "data":{
+        "whiteList":[
+            {
+                "name":"shizhiheng",
+                "password":"123456"
+            }
+        ]
+    }
+}

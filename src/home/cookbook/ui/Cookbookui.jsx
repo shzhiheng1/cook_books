@@ -25,7 +25,9 @@ export default function Cookbookui(props) {
     return (
         <Container>
             <header>美食大全</header>
-            <Swipers list={swiper(props.list)}/>
+            {props.list.length>0&&
+              <Swipers list={swiper(props.list)}/>
+            }
             <Search
               outBg="#eee"
               interBg="#fff"

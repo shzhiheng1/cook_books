@@ -8,6 +8,10 @@ import storage from 'storejs';//处理localStoreage转字符串的问题
 
 import {syncGetChecked} from './actionCreator'
 
+import {setTokenSync} from '@/login'
+import { deleteCookie } from '@/utils/cookie';
+
+
 import './more.less';
 
 @connect(
@@ -19,6 +23,10 @@ import './more.less';
             dispatch(syncGetChecked(checked))
             storage.set('checked',checked)
             // localStorage.setItem('checked',checked)
+        },
+        handleOutLogin(){
+            dispatch(setTokenSync(''))
+            deleteCookie('token')
         }
     })
 )
@@ -39,6 +47,18 @@ class  More extends Component{
                 <Switch
                    checked={this.props.checked}
                    onChange={this.props.handleChange}
+                   style={{
+                    '--checked-color': '#ee742f',
+                    '--height': '1rem',
+                    '--width': '3rem',
+                   }}
+                />
+            </div>
+            <div className='more-wrap-switch'>
+                <span>是否退出登录：</span>
+                <Switch
+                   checked={false}
+                   onChange={this.props.handleOutLogin}
                    style={{
                     '--checked-color': '#ee742f',
                     '--height': '1rem',

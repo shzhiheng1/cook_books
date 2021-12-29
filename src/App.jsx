@@ -38,24 +38,47 @@
 import React from 'react'
 import {Route,Redirect } from 'react-router-dom';
 import {useSelector} from 'react-redux'
-import Home from './home/Home'
-import List from './list/List'
-import Detail from './detail/Detail';
+// import Home from './home/Home'
+// import List from './list/List'
+// import Detail from './detail/Detail';
 import Page404 from './404Page/Page404';
+// import Login from './login/Login';
 import AnimatedSwitch from '@/components/animated/AnimatedSwitch'
+import mapRoutes from '@/routes/mapRoutes'
+
 import '@/assets/styles/reset.css';
 
 
 
-const App=()=>{
+const App=(props)=>{
     const {animatedType}=useSelector(state=>state.animatedReducer)
+    const {token}=useSelector(state=>state.loginReducer)
     return (
         <>
-            <AnimatedSwitch type={animatedType}>
-                <Route path='/home' component={Home}></Route>
+            <AnimatedSwitch type={animatedType} token={token}>
+                {/* <Route path='/home' component={Home}></Route>
                 <Route path='/list' component={List}></Route>
                 <Route path='/detail' component={Detail}></Route>
-                <Redirect exact from='/' to='/home' ></Redirect>
+                <Route path='/login' component={Login}></Route>
+                <Redirect exact from='/' to={token==='true'?'/home':'/login'} ></Redirect> */}
+                {
+                    mapRoutes.map((item, index) => {
+                        return (
+                                <Route 
+                                    key={index} 
+                                    path={item.path} 
+                                    exact 
+                                    render={
+                                        props =>
+                                        (!item.auth ? (<item.component {...props} />) : (token ? <item.component {...props} /> : <Redirect to={{
+                                        pathname: '/login',
+                                        state: { from: props.location }
+                                        }} />)
+                                    )} 
+                                />
+                        )   
+                    }) 
+                }
                 <Route path='/*' component={Page404}></Route>
             </AnimatedSwitch>
         </>
