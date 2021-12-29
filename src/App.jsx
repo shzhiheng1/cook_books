@@ -50,9 +50,17 @@ import '@/assets/styles/reset.css';
 
 
 
-const App=(props)=>{
+const App=()=>{
     const {animatedType}=useSelector(state=>state.animatedReducer)
     const {token}=useSelector(state=>state.loginReducer)
+    // 动态添加路由
+    const addComponent=(props,item)=>{
+        if (!item.auth || token) {
+            return <item.component {...props} />
+         }else {
+            return  <Redirect to={{pathname:'/login',state:{from:props.location}}}  />
+         }
+    }
     return (
         <>
             <AnimatedSwitch type={animatedType} token={token}>
@@ -69,12 +77,20 @@ const App=(props)=>{
                                     path={item.path} 
                                     exact 
                                     render={
-                                        props =>
-                                        (!item.auth ? (<item.component {...props} />) : (token ? <item.component {...props} /> : <Redirect to={{
-                                        pathname: '/login',
-                                        state: { from: props.location }
-                                        }} />)
-                                    )} 
+                                        props=> addComponent(props,item)
+                                        // props =>{
+                                        //     if (!item.auth || token) {
+                                        //         return <item.component {...props} />
+                                        //     }else {
+                                        //         return  <Redirect to={{pathname:'/login',state:{from:props.location}}}  />
+                                        //     }
+                                        // }
+                                    //     (!item.auth ? (<item.component {...props} />) : (token ? <item.component {...props} /> : <Redirect to={{
+                                    //     pathname: '/login',
+                                    //     state: { from: props.location }
+                                    //     }} />)
+                                    // )
+                                    } 
                                 />
                         )   
                     }) 

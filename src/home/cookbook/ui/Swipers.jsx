@@ -21,7 +21,11 @@ function Swipers(props){
       </Swiper.Item>
     ))
     return(
-        <Swiper autoplay loop>{items}</Swiper>
+      <div className='swiper-wrap'>
+        {
+          list.length>0&&<Swiper autoplay loop>{items}</Swiper>
+        }
+      </div>
     )
 }
 Swiper.propTypes={

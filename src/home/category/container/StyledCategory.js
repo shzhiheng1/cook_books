@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const CategoryWrap=styled.div`
+   height: calc(100vh - 4.333333rem);
    nav{
        height:1.4rem;
        background-color:#ee742f;
@@ -45,7 +46,7 @@ const CategoryWrap=styled.div`
 `
 const MenuWrap=styled.div `
    display:flex;
-   height:calc(100vh - 4rem);
+   height:calc(100vh - 4.333333rem);
    overflow:hidden;
    border-top:solid 1px #aaa;
    aside{
@@ -72,7 +73,7 @@ const MenuWrap=styled.div `
        flex:1;
        background:#fff;
        overflow:scroll;
-       height:98%;
+       height:100%;
        font-size:0.5rem;
        ul{
            display:flex;

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import border from '@/assets/styled/border'
 
 const Container=styled.div `
+    height: 100%;
+    overflow: scroll;
     header{
         color:#fff;
         background:#ff0000;

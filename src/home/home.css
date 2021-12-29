@@ -3,6 +3,9 @@
   height:100vh;
   position: relative;
 }
+main{
+  height: calc(100vh - 1.333333rem);
+}
 .nav{
   background: #fff;
   position: fixed;

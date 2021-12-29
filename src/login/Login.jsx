@@ -44,6 +44,7 @@ export default function Login() {
                     icon: 'success',
                     content: '登录成功!',
                 })
+                console.log(location)
                 if(location.state!==undefined){
                     history.push(location.state.from.pathname)
                 }else{
