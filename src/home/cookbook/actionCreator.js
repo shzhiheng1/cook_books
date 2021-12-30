@@ -11,7 +11,7 @@ const loadDataSync=list=>{
 
 const loadDataAsync=()=>{
     return async (dispatch)=>{
-       let result= await request('/api/hotcate');
+       let result= await request('/hotcate');
        dispatch(loadDataSync(result.data))
     }
 }

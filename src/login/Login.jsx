@@ -34,7 +34,7 @@ export default function Login() {
     const history=useHistory();
 
     const onFinish=(values)=>{
-        request('/api/login').then(res=>{
+        request('/login').then(res=>{
            const whiteList=res.data.whiteList
            const loginIndex=whiteList.findIndex(item=>item.name===values.name&&item.password===values.password)
            if(loginIndex>-1){

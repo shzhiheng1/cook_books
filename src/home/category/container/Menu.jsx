@@ -57,7 +57,7 @@ class Menu extends Component {
             const checkCate=this.props.categoryType==="category"?"主食":"粮食"
             this.props.changeAside(checkCate)
         }
-        request('/api/category').then(res=>{
+        request('/category').then(res=>{
             console.log(res)
             this.setState({
                 cate:res.data
