@@ -92,3 +92,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## 5. 配置less 
 `yarn add less less-loader`
 
+## 6. 配置多环境
+`yarn add dotenv-cli -D`
+
+### 使用：
+1. 根目录下创建如：.env.uat文件
+2. package.json配置："uat": "dotenv -e .env.uat react-app-rewired start"
+
+> **注意：**
+
+>> __变量定义:REACT_APP_XXX=xxx__ 
+
+>> __变量获取:process.env.REACT_APP_XXX__
+
+>> yarn start 默认为.env.development;  yarn build默认为.env.production
