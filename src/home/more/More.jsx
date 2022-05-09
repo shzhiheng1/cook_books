@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {
    NavBar,
-   Switch
+   Switch,
+   Button,
+   Divider
 }from 'antd-mobile'
 import { connect } from 'react-redux';
 import storage from 'storejs';//处理localStoreage转字符串的问题
@@ -9,11 +11,12 @@ import storage from 'storejs';//处理localStoreage转字符串的问题
 import {syncGetChecked} from './actionCreator'
 
 import {setTokenSync} from '@/login'
-import { deleteCookie } from '@/utils/cookie';
+import { deleteCookie,getCookie } from '@/utils/cookie';
+import { withRouter } from 'react-router-dom'
 
 
 import './more.less';
-
+@withRouter
 @connect(
     state=>({
         checked:state.moreReducer.checked
@@ -30,7 +33,12 @@ import './more.less';
         }
     })
 )
-class  More extends Component{
+class  More extends Component {
+    handleBtn=()=>{
+        const history=this.props.history
+        const _name=getCookie('name') || ''
+        history.push({pathname:'/mine',state:{title:'我的信息',username:_name}})
+    }
    render(){
     return (
         <div className='more-wrap'>
@@ -54,6 +62,10 @@ class  More extends Component{
                    }}
                 />
             </div>
+            <Divider  style={{
+                color: '#ee742f',
+                borderColor: '#ee742f',
+            }}/>
             <div className='more-wrap-switch'>
                 <span>是否退出登录：</span>
                 <Switch
@@ -65,6 +77,16 @@ class  More extends Component{
                     '--width': '3rem',
                    }}
                 />
+            </div>
+            <Divider  style={{
+                color: '#ee742f',
+                borderColor: '#ee742f',
+            }}/>
+            <div className='more-wrap-switch'>
+                <span>完善我的信息：</span>
+                <Button  type='text' color='primary' fill='none' onClick={this.handleBtn}>
+                  去完善  
+                </Button>
             </div>
         </div>
     )

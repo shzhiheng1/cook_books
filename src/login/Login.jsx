@@ -40,6 +40,7 @@ export default function Login() {
            if(loginIndex>-1){
                 setCookie('token','true',1)
                 dispatch(setTokenSync('true'))
+                setCookie('name',values.name,1)
                 Toast.show({
                     icon: 'success',
                     content: '登录成功!',
