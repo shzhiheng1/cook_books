@@ -3,8 +3,12 @@ import {
    NavBar,
    Switch,
    Button,
-   Divider
-}from 'antd-mobile'
+   Divider,
+   List
+}from 'antd-mobile';
+import {
+    UnorderedListOutline,
+} from 'antd-mobile-icons'
 import { connect } from 'react-redux';
 import storage from 'storejs';//处理localStoreage转字符串的问题
 
@@ -38,6 +42,10 @@ class  More extends Component {
         const history=this.props.history
         const _name=getCookie('name') || ''
         history.push({pathname:'/mine',state:{title:'我的信息',username:_name}})
+    }
+    handleForce=()=>{
+        const history=this.props.history;
+        history.push({pathname:'/functional/force',state:{title:'React功能测试'}})
     }
    render(){
     return (
@@ -88,6 +96,12 @@ class  More extends Component {
                   去完善  
                 </Button>
             </div>
+            <List header='react功能测试'>
+                <List.Item prefix={<UnorderedListOutline />} onClick={this.handleForce}>
+                    React强制更新
+                </List.Item>
+            </List>
+
         </div>
     )
    }
